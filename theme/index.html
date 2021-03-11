@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="">
+<head>
+<meta charset="utf-8">
+<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>{str_word}</title>
+<link rel="stylesheet" href="{theme_base_path}css/normalize.css">
+<link rel="stylesheet" href="{theme_base_path}css/login.css">
+<link rel="stylesheet" href="{theme_base_path}css/sign-up-login.css">
+<link href="https://cdn.bootcdn.net/ajax/libs/font-awesome/4.6.0/css/font-awesome.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{theme_base_path}css/inputEffect.css" />
+<link rel="stylesheet" href="{theme_base_path}css/tooltips.css" />
+<link rel="stylesheet" href="{theme_base_path}css/spop.min.css" />
+
+<script src="https://cdn.bootcdn.net/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="{theme_base_path}js/snow.js"></script>
+<script src="{theme_base_path}js/jquery.pure.tooltips.js"></script>
+<script src="{theme_base_path}js/spop.min.js"></script>
+<script>	
+	(function() {
+		// trim polyfill : https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/String/Trim
+		if (!String.prototype.trim) {
+			(function() {
+				// Make sure we trim BOM and NBSP
+				var rtrim = /^[\s\uFEFF\xA0]+|[\s\uFEFF\xA0]+$/g;
+				String.prototype.trim = function() {
+					return this.replace(rtrim, '');
+				};
+			})();
+		}
+
+		[].slice.call( document.querySelectorAll( 'input.input__field' ) ).forEach( function( inputEl ) {
+			// in case the input is already filled..
+			if( inputEl.value.trim() !== '' ) {
+				classie.add( inputEl.parentNode, 'input--filled' );
+			}
+
+			// events:
+			inputEl.addEventListener( 'focus', onInputFocus );
+			inputEl.addEventListener( 'blur', onInputBlur );
+		} );
+
+		function onInputFocus( ev ) {
+			classie.add( ev.target.parentNode, 'input--filled' );
+		}
+
+		function onInputBlur( ev ) {
+			if( ev.target.value.trim() === '' ) {
+				classie.remove( ev.target.parentNode, 'input--filled' );
+			}
+		}
+	})();
+
+	$(function() {
+		$('#login #login-password').focus(function() {
+			$('.login-owl').addClass('password');
+		}).blur(function() {
+			$('.login-owl').removeClass('password');
+		});
+		$('#login #register-password').focus(function() {
+			$('.register-owl').addClass('password');
+		}).blur(function() {
+			$('.register-owl').removeClass('password');
+		});
+		$('#login #register-repassword').focus(function() {
+			$('.register-owl').addClass('password');
+		}).blur(function() {
+			$('.register-owl').removeClass('password');
+		});
+		$('#login #forget-password').focus(function() {
+			$('.forget-owl').addClass('password');
+		}).blur(function() {
+			$('.forget-owl').removeClass('password');
+		});
+	});
+
+
+
+</script>
+<style type="text/css">
+html{width: 100%; height: 100%;}
+body{
+	background-repeat: no-repeat;
+	background-position: center center #2D0F0F;
+	background-image: url({commic_pic});
+	background-size: 100% 100%;
+	width: 100%;
+	height: 100%;
+}
+
+.snow-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: 100001; }
+#login .loginform{
+	box-shadow: 0 0 10px #ffffff;
+	border-radius: 5px;
+	opacity: 0.86;
+}
+.info_text{
+	font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+	line-height: 25px;
+	font-weight: bold;
+	color: #555;
+}
+.pic_banner{
+	border-top: 1px solid #e4e4e4;
+	background-color: #f7f7f7;
+	padding: 15px 30px;
+	text-align: center;
+}
+</style>
+</head>
+<body>
+	<!-- 雪花背景 -->
+	<div class="snow-container"></div>
+	<!-- 登录控件 -->
+	<div id="login">
+		<input id="tab-1" type="radio" name="tab" class="sign-in hidden" checked />
+		<input id="tab-2" type="radio" name="tab" class="sign-up hidden" />
+		<input id="tab-3" type="radio" name="tab" class="sign-out hidden" />
+		<div class="wrapper">
+			<!-- 登录页面 -->
+			<div class="login sign-in-htm">
+				<form class="container offset1 loginform" action="{form_action}" method="post">
+					<!-- 猫头鹰控件 -->
+					<div id="owl-login" class="login-owl">
+						<div class="hand"></div>
+						<div class="hand hand-r"></div>
+						<div class="arms">
+							<div class="arm"></div>
+							<div class="arm arm-r"></div>
+						</div>
+					</div>
+					<div class="pic_banner">
+						<div style="text-align: center">
+							<img style="max-height: 66px;width: auto" src="{url_pic}" alt="">
+						</div>
+					</div>
+					<div class="pad input-container">
+						<section class="content">
+							<div class="input">
+								<h4 class="info_text">{str_word}</h4>
+							</div>
+							<span class="input input--hideo">
+								<input class="input__field input__field--hideo" name="index_passwd" type="password" id="login-password" placeholder="{input_placeholder}" tabindex="2" maxlength="15"/>
+								<label class="input__label input__label--hideo" for="login-password">
+									<i class="fa fa-fw fa-lock icon icon--hideo"></i>
+									<span class="input__label-content input__label-content--hideo"></span>
+								</label>
+							</span>
+							<br><span style="color:red">{err_msg}</span>
+						</section>
+					</div>
+					<div class="form-actions">
+						<input class="btn btn-primary" type="submit" tabindex="3" value="{submit_text}" style="color:white;">
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</body>
+</html>
