@@ -1,5 +1,5 @@
 # AllsitePasswd
-AllsitePasswd 是一款启用全站密码访问插件，支持自定义主题模板
+AllsitePasswd 是一款启用全站密码访问插件，支持自定义主题模板:@(呆滞)
 
 github地址：https://github.com/gogobody/AllsitePasswd
 
@@ -15,7 +15,7 @@ github地址：https://github.com/gogobody/AllsitePasswd
 但注意引用图片，css，js等文件时需要使用绝对路径。
 比如：
 -AllsitePasswd  
- |- theme  
+|- theme  
 &nbsp;&nbsp;   |- css/a.css  
 &nbsp;&nbsp;   |- js/b.js  
 &nbsp;&nbsp;  |- index.html
@@ -29,7 +29,7 @@ github地址：https://github.com/gogobody/AllsitePasswd
 /usr/plugins/AllsitePasswd/theme/js/b.js
 ```
 
-在 html 文件中可以用的替代变量，只需要把html对应位置换成以下变量即可。只针对 index.html 有效。
+在 html 文件中可以用的替代变量，只需要把html对应位置换成以下变量即可。只针对 index.html 有效:@(鼓掌)。
 
 ```css
 '{theme_base_path}',// 绝对路径，指向 /usr/plugins/AllsitePasswd/theme/
@@ -40,4 +40,17 @@ github地址：https://github.com/gogobody/AllsitePasswd
 '{input_placeholder}',// 后台配置的输入框提示
 '{submit_text}',// 后台配置的提交按钮
 '{commic_pic}' // 插件自带的动漫图 api，比如：<img src="{commic_pic}">
+```
+还有就是输入密码那个 input 的name属性：
+```css
+name="index_passwd"
+```
+
+举个栗子:&(蛆音疑惑)：
+```
+<form action="{form_action}">
+<input name="index_passwd" type="password" placeholder="{input_placeholder}" />
+<input type="submit" value="{submit_text}">
+</form>
+
 ```
