@@ -1,9 +1,9 @@
 <?php
 if (!defined('__TYPECHO_ROOT_DIR__')) exit;
 /**
- * AllsitePasswd
+ * AllsitePasswd 是一款启用全站密码访问插件，支持自定义主题模板
  * 
- * @package AllsitePasswd 是一款启用全站密码访问插件，支持自定义主题模板
+ * @package AllsitePasswd
  * @author 即刻学术
  * @version 1.0.0
  * @link https://www.ijkxs.com
