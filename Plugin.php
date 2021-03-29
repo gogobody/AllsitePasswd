@@ -49,7 +49,7 @@ class AllsitePasswd_Plugin implements Typecho_Plugin_Interface
 			}
 		}
 		$plugin_optiosn = Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd');
-		if(empty($_COOKIE["index_passwd"])){
+		if(empty($_COOKIE["index_passwd"]) or trim($_POST['index_passwd'])!= Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->str_Pword){
             $html = file_get_contents(dirname(__FILE__) . '/theme/index.html');
             // 替换内容
             $template = str_replace(
