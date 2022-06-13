@@ -31,10 +31,11 @@ class AllsitePasswd_Plugin implements Typecho_Plugin_Interface
 
 	public static function main_fun()
     {
-        Typecho_Widget::widget('Widget_Security')->to($security);
-        if ($security->request->get('_') == $security->getToken($security->request->getReferer())){
-            return;
-        }
+
+//        Typecho_Widget::widget('Widget_Security')->to($security);
+//        if ($security->request->get('_') == $security->getToken($security->request->getReferer())){
+//            return;
+//        }
         $Str_Msg_PSWERR="";
 		//检查密码 处理 cookies
 		if ( isset($_POST['index_passwd']) ){
@@ -49,7 +50,7 @@ class AllsitePasswd_Plugin implements Typecho_Plugin_Interface
 			}
 		}
 		$plugin_optiosn = Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd');
-		if(empty($_COOKIE["index_passwd"]) or trim($_POST['index_passwd'])!= Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->str_Pword){
+		if(empty($_COOKIE["index_passwd"]) or trim($_COOKIE["index_passwd"])!= Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->str_Pword){
             $html = file_get_contents(dirname(__FILE__) . '/theme/index.html');
             // 替换内容
             $template = str_replace(
@@ -77,32 +78,9 @@ class AllsitePasswd_Plugin implements Typecho_Plugin_Interface
             );
             die($template);
      ?>
-<!--	 <!DOCTYPE html><html lang="en"><head><meta charset="UTF-8">-->
-<!--        <title>--><?php //echo htmlspecialchars(Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->str_word)?><!--</title>-->
-<!--        <style>html {padding: 50px 10px;font-size: 16px;line-height: 1.4;color: #666;background: #F6F6F3;-webkit-text-size-adjust: 100%;                -ms-text-size-adjust: 100%;}html,input { font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; }body {max-width: 500px;_width: 500px;padding: 30px 20px;margin: 0 auto;background: #FFF;}ul {padding: 0 0 0 40px;}.container {max-width: 380px;_width: 380px;margin: 0 auto;}</style>-->
-<!--    </head><body>-->
-<!--        <div class="container">-->
-<!--        <img src=" --><?php //echo htmlspecialchars(Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->url_pic)?><!--" />-->
-<!--        <br>-->
-<!--           --><?php //echo Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->str_word?>
-<!--           <br><span style="color:red">--><?php //echo $Str_Msg_PSWERR;?><!--</span><br>-->
-<!---->
-<!--           <form action="--><?php //echo $_SERVER["REQUEST_URI"];?><!--" method="post" >-->
-<!--           <input type="password"  name="index_passwd" placeholder="--><?php //echo htmlspecialchars(Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->placeholder)?><!--" /> -->
-<!--           -->
-<!--           <input type="submit" value="--><?php //echo htmlspecialchars(Typecho_Widget::widget('Widget_Options')->plugin('AllsitePasswd')->Submit)?><!--">-->
-<!--           </form>-->
-<!--        </div>-->
-<!--        </body></html>-->
+
 	 <?php
-	 //停止输出其他内容
-	 exit();
-	 
-	 }else{
-		//密码存在 什么都不做
-	}	
-	 
-	 
+	 }
 	}
 	
 	
